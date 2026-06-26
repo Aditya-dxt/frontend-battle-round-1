@@ -284,7 +284,7 @@ export default function Hero() {
         </h1>
 
         <p ref={subRef} className="font-body text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed">
-          NeuralFlow connects every data source in your stack. Build intelligent pipelines that clean, transform,
+          Vexel connects every data source in your stack. Build intelligent pipelines that clean, transform,
           and act on your data — without writing a single line of SQL.
         </p>
 
