@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables ── */
+:root {
+  --bg-primary: #050a0e;
+  --bg-secondary: #0a1628;
+  --bg-card: #0f1f35;
+  --accent-cyan: #00d4ff;
+  --accent-purple: #7c3aed;
+  --accent-gold: #f59e0b;
+  --text-primary: #f0f4f8;
+  --text-secondary: #8892a4;
+  --border-color: rgba(0, 212, 255, 0.15);
+  --glow-cyan: rgba(0, 212, 255, 0.25);
+  --glow-purple: rgba(124, 58, 237, 0.25);
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ── */
+.font-display { font-family: 'Space Grotesk', sans-serif; }
+.font-body    { font-family: 'Inter', sans-serif; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple));
+  border-radius: 3px;
+}
+
+/* ── Glass Nav ── */
+.glass-nav {
+  background: rgba(5, 10, 14, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Card Glass ── */
+.card-glass {
+  background: rgba(15, 31, 53, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ── Glow Border ── */
+.glow-border {
+  border: 1px solid var(--accent-cyan);
+  box-shadow: 0 0 12px var(--glow-cyan), inset 0 0 12px rgba(0, 212, 255, 0.05);
+}
+
+.glow-border-purple {
+  border: 1px solid var(--accent-purple);
+  box-shadow: 0 0 12px var(--glow-purple), inset 0 0 12px rgba(124, 58, 237, 0.05);
+}
+
+/* ── Cyber Grid ── */
+.cyber-grid {
+  position: relative;
+  overflow: hidden;
+}
+.cyber-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, transparent 75%);
+  pointer-events: none;
+  animation: grid-drift 20s linear infinite;
+}
+@keyframes grid-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 48px 48px; }
+}
+
+/* ── Hero Grid Background ── */
+.hero-grid-bg {
+  background-color: var(--bg-primary);
+  position: relative;
+}
+
+/* ── Text Gradient ── */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, #00a8cc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-purple {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Button Styles ── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-cyan), #0096b3);
+  color: var(--bg-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--glow-cyan);
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 35px var(--glow-cyan);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.btn-secondary:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 15px var(--glow-cyan);
+}
+
+/* ── Stat Counter ── */
+.stat-value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 0.25rem;
+}
+
+/* ── Bento Grid ── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: 1.25rem;
+}
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: 1fr; }
+}
+
+.bento-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.3s;
+}
+.bento-card:hover { border-color: rgba(0, 212, 255, 0.45); }
+.bento-card.large { grid-column: span 2; grid-row: span 2; }
+.bento-card.tall  { grid-row: span 2; }
+
+/* ── Accordion ── */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+  opacity: 0;
+}
+.accordion-content.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* ── Pricing ── */
+.pricing-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.pricing-card.featured {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 30px var(--glow-cyan);
+}
+.pricing-card:hover { transform: translateY(-4px); }
+
+/* ── Testimonials ── */
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.75rem;
+  position: relative;
+}
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--accent-cyan);
+  opacity: 0.12;
+  font-family: Georgia, serif;
+}
+
+/* ── Marquee ── */
+.marquee-track {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  white-space: nowrap;
+}
+.marquee-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* ── Section Labels ── */
+.section-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+}
+
+/* ── Divider ── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+}
+
+/* ── Scroll Reveal (fallback before GSAP) ── */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ── Currency Dropdown ── */
+.currency-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.currency-trigger:hover,
+.currency-trigger[aria-expanded="true"] {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 14px var(--glow-cyan);
+}
+
+.currency-panel {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  min-width: 200px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 20px var(--glow-cyan);
+  padding: 0.4rem;
+  z-index: 60;
+  transform-origin: top right;
+}
+
+.currency-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  text-align: left;
+  transition: background-color 0.2s;
+}
+.currency-option:hover { background: rgba(0, 212, 255, 0.08); }
+.currency-option.is-active { background: rgba(0, 212, 255, 0.12); }
+
+/* ── Sliding Billing Toggle ── */
+.billing-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.3rem;
+  gap: 0.2rem;
+}
+
+.billing-thumb {
+  position: absolute;
+  top: 0.3rem;
+  left: 0;
+  height: calc(100% - 0.6rem);
+  background: linear-gradient(135deg, var(--accent-cyan), #0096b3);
+  border-radius: 8px;
+  box-shadow: 0 0 16px var(--glow-cyan);
+  z-index: 0;
+}
+
+.billing-option {
+  position: relative;
+  z-index: 1;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.25s;
+  white-space: nowrap;
+}
+.billing-option.is-active {
+  color: var(--bg-primary);
+  font-weight: 600;
+}
+
+.billing-discount {
+  font-size: 0.7rem;
+  opacity: 0.75;
+  margin-left: 0.15rem;
+}
+
+/* ── Navbar scroll-spy indicator ── */
+.nav-indicator {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--glow-cyan);
+  pointer-events: none;
+}
