@@ -403,3 +403,29 @@ body {
   box-shadow: 0 0 8px var(--glow-cyan);
   pointer-events: none;
 }
+
+/* ── Bento Section Mobile Responsiveness ── */
+@media (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .bento-card.large,
+  .bento-card.tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .bento-card {
+    padding: 1.25rem;
+  }
+
+  .bento-card img {
+    height: 180px !important;
+  }
+
+  .bento-card .grid.grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+}
